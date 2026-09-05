@@ -1,0 +1,246 @@
+@import url("./cochin/stylesheet.css");
+@import url("./palatino/stylesheet.css");
+
+:root {
+  --c-g-90: light-dark(hsl(210, 6%, 7%), hsl(225, 40%, 98%));
+  --c-g-85: light-dark(hsl(220, 5%, 9%), hsl(225, 40%, 97%));
+  --c-g-80: light-dark(hsl(220, 5%, 12%), hsl(225, 40%, 96%));
+  --c-g-75: light-dark(hsl(218, 8%, 16%), hsl(225, 40%, 93%));
+  --c-g-70: light-dark(hsl(218, 8%, 20%), hsl(220, 29%, 90%));
+  --c-g-65: light-dark(hsl(221, 8%, 30%), hsl(220, 29%, 85%));
+  --c-g-60: light-dark(hsl(221, 8%, 40%), hsl(219, 20%, 80%));
+  --c-g-55: light-dark(hsl(219, 10%, 50%), hsl(219, 20%, 70%));
+  --c-g-50: light-dark(hsl(219, 10%, 60%), hsl(219, 10%, 60%));
+  --c-g-45: light-dark(hsl(219, 20%, 70%), hsl(219, 10%, 50%));
+  --c-g-40: light-dark(hsl(219, 20%, 80%), hsl(221, 8%, 40%));
+  --c-g-35: light-dark(hsl(220, 29%, 85%), hsl(221, 8%, 30%));
+  --c-g-30: light-dark(hsl(220, 29%, 90%), hsl(218, 8%, 20%));
+  --c-g-25: light-dark(hsl(225, 40%, 93%), hsl(218, 8%, 16%));
+  --c-g-20: light-dark(hsl(225, 40%, 96%), hsl(220, 5%, 12%));
+  --c-g-15: light-dark(hsl(225, 40%, 97%), hsl(220, 5%, 9%));
+  --c-g-10: light-dark(hsl(225, 40%, 98%), hsl(210, 6%, 7%));
+
+  --c-background: light-dark(hsl(220, 29%, 90%), hsl(0, 0%, 9%));
+}
+
+@media (min-width: 700px) {
+  @media (prefers-reduced-motion: no-preference) {
+    ::view-transition {
+      user-select: none;
+      -moz-user-select: none;
+    }
+
+    ::view-transition-old(root) {
+      animation-delay: 500ms;
+    }
+
+    ::view-transition-new(root) {
+      animation: circle-in 800ms;
+    }
+
+    @keyframes circle-in {
+      from {
+        clip-path: circle(0% at 97.7% 2.5%);
+      }
+      to {
+        clip-path: circle(150% at 97.7% 2.5%);
+      }
+    }
+  }
+}
+
+:focus-visible {
+  outline: 2.5px solid light-dark(darkorange, orange);
+}
+
+::selection {
+  background: light-dark(hsl(120, 80%, 70%), hsl(120, 80%, 10%));
+  color: light-dark(hsl(120, 80%, 20%), hsl(120, 80%, 50%));
+}
+
+* {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+}
+
+html {
+  color-scheme: dark;
+  background-color: var(--c-background);
+  color: light-dark(hsl(0, 0%, 6%), var(--c-g-60));
+  font-family: "Cochin LT Std";
+
+  &#light {
+    color-scheme: light;
+  }
+}
+
+header {
+  width: 80ch;
+  margin-inline: auto;
+  display: flex;
+  justify-content: space-between;
+  padding-top: 0.25rem;
+  max-width: 95vw;
+
+  span,
+  > a {
+    font-size: 1.2em;
+  }
+}
+
+menu {
+  position: absolute;
+  right: 0.5rem;
+  top: 0.5rem;
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  padding: 0 0.5rem;
+  margin: 0;
+
+  a {
+    font-size: 1rem;
+    text-decoration: none;
+    user-select: none;
+    color: light-dark(hsl(0, 0%, 6%), var(--c-g-60)) !important;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: lighter;
+  }
+}
+
+main {
+  width: 80ch;
+  margin-inline: auto;
+  max-width: 95vw;
+
+  p,
+  ul,
+  details {
+    font-size: 1.2em;
+    margin-block: 0.5rem;
+    line-height: 1;
+  }
+}
+
+h1 {
+  color: light-dark(var(--c-g-65), var(--c-g-60));
+  font-size: clamp(1rem, 15.5vw, 6.7rem);
+  margin-block: 1rem 0;
+}
+
+h2 {
+  color: light-dark(var(--c-g-65), var(--c-g-60));
+  font-size: clamp(1rem, 15vw, 2rem);
+  margin-block: 2.25rem 0.5rem;
+  line-height: 1;
+  letter-spacing: 2.5px;
+}
+
+.top {
+  display: flow-root;
+
+  img {
+    float: left;
+    border-radius: 2.5px;
+    margin-right: 1.25rem;
+    margin-bottom: 0.75rem;
+    user-select: none;
+
+    &:is(#light &) {
+      filter: brightness(1.2) contrast(0.8) sepia(0.1) hue-rotate(200deg);
+    }
+  }
+
+  p {
+    font-family: "Palatino";
+    font-size: 1.2rem;
+    line-height: 1.2;
+    margin: 0;
+
+    & + p {
+      margin-top: 1rem;
+    }
+  }
+
+  b {
+    font-size: 1.3rem;
+  }
+}
+
+hr {
+  background-color: transparent;
+  border: none;
+  border-top: 1px solid
+    light-dark(hsla(0, 0%, 20%, 0.6), hsla(0, 0%, 100%, 0.3));
+}
+
+i {
+  font-style: oblique;
+}
+
+.my-sigil {
+  display: block;
+  margin: 4rem auto 2rem auto;
+}
+
+footer {
+  text-align: center;
+  font-size: 1.2em;
+
+  p {
+    margin-block: 0.25rem;
+  }
+}
+
+ul {
+  padding-left: 2rem;
+
+  li::marker {
+    content: "◈ ";
+    font-size: 1.2rem;
+
+    color: light-dark(var(--c-g-65), var(--c-g-55));
+  }
+}
+
+li {
+  line-height: 1.2;
+}
+
+li > span {
+  display: inline-flex;
+  justify-content: space-between;
+  width: 97%;
+  align-items: baseline;
+}
+
+li b {
+  font-family: "Palatino";
+  color: light-dark(var(--c-g-65), var(--c-g-60));
+
+  &::after {
+    content: ", ";
+    font-weight: normal;
+  }
+}
+
+li ul {
+  padding-left: 1.25rem;
+  margin-block: 0 0.5rem;
+}
+
+li li {
+  font-size: 1.1rem;
+  opacity: 0.6;
+}
+
+li span span:last-of-type {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 1.1rem;
+  word-spacing: -0.325em;
+}
+
+.top p.focus,
+.top p.port-link {
+  margin-top: 1.75rem;
+}
